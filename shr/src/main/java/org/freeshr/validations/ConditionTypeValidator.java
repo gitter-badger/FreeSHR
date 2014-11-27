@@ -9,7 +9,7 @@ import java.util.List;
 import static org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
 
 @Component
-public class ConditionValidator extends Validator {
+public class ConditionTypeValidator extends Validator {
 
     public static final String DIAGNOSIS = "Diagnosis";
     public static final String CATEGORY = "category";

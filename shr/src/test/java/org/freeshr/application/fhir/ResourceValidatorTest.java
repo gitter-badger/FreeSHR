@@ -1,7 +1,6 @@
 package org.freeshr.application.fhir;
 
 import org.freeshr.utils.FileUtil;
-import org.freeshr.validations.ConditionValidator;
 import org.freeshr.validations.ResourceValidator;
 import org.hl7.fhir.instance.model.OperationOutcome;
 import org.hl7.fhir.instance.validation.ValidationMessage;
@@ -44,6 +43,12 @@ public class ResourceValidatorTest {
     @Test
     public void shouldValidateConditionDiagnosisWithAllValidComponents() {
         List<ValidationMessage> messages = resourceValidator.validate(FileUtil.asString("xmls/encounters/valid_diagnosis.xml"));
+        assertThat(messages.isEmpty(), is(true));
+    }
+
+    @Test
+    public void foo() {
+        List<ValidationMessage> messages = resourceValidator.validate(FileUtil.asString("xmls/encounters/diagnostic_order_valid.xml"));
         assertThat(messages.isEmpty(), is(true));
     }
 

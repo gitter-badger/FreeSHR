@@ -1,9 +1,11 @@
 package org.freeshr.validations;
 
 
+import org.freeshr.domain.service.EncounterService;
 import org.freeshr.utils.ResourceOrFeedDeserializer;
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.validation.ValidationMessage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ public class ResourceValidator {
     private ResourceOrFeedDeserializer resourceOrFeedDeserializer;
     private Map<ResourceType, Validator> resourceTypeValidatorMap = new HashMap<ResourceType, Validator>();
 
+    @Autowired
     public ResourceValidator() {
         this.resourceOrFeedDeserializer = new ResourceOrFeedDeserializer();
         populateValidatorMap();
@@ -26,7 +29,8 @@ public class ResourceValidator {
 
     private void populateValidatorMap() {
         assignDefaultValidatorToAllResourceTypes();
-        resourceTypeValidatorMap.put(ResourceType.Condition, new ConditionValidator());
+        resourceTypeValidatorMap.put(ResourceType.Condition, new ConditionTypeValidator());
+        resourceTypeValidatorMap.put(ResourceType.Encounter, new EncounterTypeValidator());
     }
 
     private void assignDefaultValidatorToAllResourceTypes() {

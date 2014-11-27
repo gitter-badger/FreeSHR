@@ -2,7 +2,6 @@ package org.freeshr.application.fhir;
 
 
 import org.freeshr.validations.FhirSchemaValidator;
-import org.freeshr.validations.ConditionValidator;
 import org.freeshr.validations.HealthIdValidator;
 import org.freeshr.validations.ResourceValidator;
 import org.hl7.fhir.instance.model.OperationOutcome;
